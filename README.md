@@ -46,11 +46,11 @@ En los archivos adjuntos en el directorio ``include/``, se muestra un ejemplo de
 
 <br>
 
-## Conclusión:
+## Conclusión:
 
 Creo que existe un fallo en caso en el que la protección del header es incorrecta y la última instrucción del .h es un ``# define`` (ver ``norminette include/works_incorrect_03.h``). Debería funcionar de igual manera y no terminar de manera inesperada.
 
-## Detalles:
+## Detalles:
 - Versión testeada:
 	- Mac: norminette 3.3.51
 	- Linus: 
