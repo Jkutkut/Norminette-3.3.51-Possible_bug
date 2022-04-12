@@ -1,8 +1,8 @@
 # Posible bug en Norminette:
 
-## Descripción:
+## Description:
 
-El posible bug ocurre en archivos .h al tener una protección de header inválida y un define como última instrucción dentro del if. Esto hace que norminette tenga un crash.
+Crash when checking .h files with invalid header protection and define as the last instruction inside the if statement.
 
 	$> norminette include/doesnt_work_incorrect.h
 	Traceback (most recent call last):
@@ -22,36 +22,34 @@ El posible bug ocurre en archivos .h al tener una protección de header inválid
 		self.errors.append(NormError(errno, tkn.pos[0], tkn.pos[1]))
 	AttributeError: 'NoneType' object has no attribute 'pos'
 
-## Ejemplo:
-En los archivos adjuntos en el directorio ``include/``, se muestra un ejemplo de cómo falla norminette y qué debería ocurrir:
-- Si ejecutamos:
+## Example:
+With the files in the directory ``include/`` we can see where *norminette* crashes and what should happend:
+- If we execute:
 
 		norminette include/works_correct.h
 
-	o cualquiera de estos
+	o any of this commands
 
 		norminette include/works_incorrect_01.h
 		norminette include/works_incorrect_02.h
 		norminette include/works_incorrect_03.h
 	
-	vemos que el *norminette* funciona como es esperado (diciendo si el header es válido o no).
+	we can see that *norminette* works as spected (detecting if the header protection is valid or not).
 
-- Vemos que falla en los incorrectos debido a que falta en la protección de cada header ``_H`` al final.
-
-- Sin embargo, si ejecutamos:
+- If we execute now:
 
 		norminette include/doesnt_work_incorrect.h
 
-	vemos que nos salta el error mostrado en el inicio.
+	we can see that the program crashes (giving us the error at the top of the document).
 
 <br>
 
-## Conclusión:
+## Results:
+I believe there is an error when checking if the header protection if the last instruction of the if statement is a ``# define`` (see ``norminette include/works_incorrect_03.h``). It should work the same way as the rest of the cases and not end unspectedly.
 
-Creo que existe un fallo en caso en el que la protección del header es incorrecta y la última instrucción del .h es un ``# define`` (ver ``norminette include/works_incorrect_03.h``). Debería funcionar de igual manera y no terminar de manera inesperada.
-
-## Detalles:
-- Versiones testeadas:
+## Details:
+- This error may be fixed already with [#273](https://github.com/42School/norminette/commit/29eff0a90a1e4843f4689e9ccc8a06a4743b87a6) because it changes a line related with the error. However, I am not able to test this theory (public release is not updated with this change and I am not able to run norminette cloning the repository).
+- Tested versions:
 	- Mac OS (42Madrid):
 		- norminette 3.3.51
 		- python 3.7.3
