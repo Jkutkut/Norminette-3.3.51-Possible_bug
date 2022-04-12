@@ -54,7 +54,7 @@ I believe there is an error when checking if the header protection if the last i
 		- norminette 3.3.51
 		- python 3.7.3
 	- Ubuntu 21.10:
-		- norminette 3.3.51 and repository current [commit](https://github.com/42School/norminette/commit/d443df72accb7b66bd65e98d76207da1e6968e00).
+		- norminette 3.3.51 and repository in current [commit](https://github.com/42School/norminette/commit/d443df72accb7b66bd65e98d76207da1e6968e00).
 		- python 3.9.2
 	- Debian GNU/Linux 11.
 		- norminette 3.3.51
