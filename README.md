@@ -1,4 +1,4 @@
-# Posible bug en Norminette:
+# Possible bug on Norminette 3.3.51:
 
 ## Description:
 
@@ -48,13 +48,13 @@ With the files in the directory ``include/`` we can see where *norminette* crash
 I believe there is an error when checking if the header protection if the last instruction of the if statement is a ``# define`` (see ``norminette include/works_incorrect_03.h``). It should work the same way as the rest of the cases and not end unspectedly.
 
 ## Details:
-- This error may be fixed already with [#273](https://github.com/42School/norminette/commit/29eff0a90a1e4843f4689e9ccc8a06a4743b87a6) because it changes a line related with the error. However, I am not able to test this theory (public release is not updated with this change and I am not able to run norminette cloning the repository).
+- This error may be related with [#273](https://github.com/42School/norminette/commit/29eff0a90a1e4843f4689e9ccc8a06a4743b87a6) because it changes a line related with the error. However, I am not able to fix the error with this change.
 - Tested versions:
 	- Mac OS (42Madrid):
 		- norminette 3.3.51
 		- python 3.7.3
 	- Ubuntu 21.10:
-		- norminette 3.3.51
+		- norminette 3.3.51 and repository current [commit](https://github.com/42School/norminette/commit/d443df72accb7b66bd65e98d76207da1e6968e00).
 		- python 3.9.2
 	- Debian GNU/Linux 11.
 		- norminette 3.3.51
